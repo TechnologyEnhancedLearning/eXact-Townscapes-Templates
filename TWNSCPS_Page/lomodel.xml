@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="" family="TWNSCPS1.0" hideroot="yes" name="TWNSCPS_Page" main="no" webeditorsafe="yes" shred="no" thumbnail="stage" tag="TWNSCPS_Page" descr="PopUp Page" comment="PopUp Page" order="yes" icon="page.ico" xslid="TWNSCPS_Page">
+
+    <param name="iconColour" descr="Icon colour (hexadecimal)" default="#000" />
+
+    <item name="background" tag="Background" descr="Background" type="folder" order="yes" minocc="1" maxocc="1" icon="open-folder.ico">
+        <item name="image" descr="Image" type="image" maintainemptyinstances="true" linkmode="none" filetypes="*.svg" order="yes" minocc="1" maxocc="1" tag="Image" icon="image.ico"/>
+        <param name="backgroundColor" descr="Background colour (hexadecimal)" closed="no" default="#000" type="" />
+    </item> 
+
+    <item name="links" tag="Links" descr="Links" type="folder" maintainemptyinstances="true" order="no" minocc="1" maxocc="1" icon="open-folder.ico">
+
+        <item name="link" tag="Link" descr="Link" type="folder" order="yes" minocc="1" maxocc="9" icon="open-folder.ico">
+
+            <item name="linkText" tag="LinkText" descr="Text" type="text" maintainemptyinstances="true" order="no" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico" />
+        
+            <item name="sublinks" tag="Links" descr="Links" type="folder" maintainemptyinstances="true" order="no" minocc="1" maxocc="1" icon="open-folder.ico">
+               
+                <item name="sublink" tag="Link" descr="Link" type="folder" order="no" minocc="1" maxocc="*" icon="open-folder.ico">
+                    <item name="subLinkText" tag="LinkText" descr="Text" type="text" order="no" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico" />
+
+                    <item name="accordionItems" tag="Accordion" descr="Accordion items" type="folder" order="no" minocc="0" maxocc="1" icon="open-folder.ico">
+                        <item name="accordionItemText" tag="AccordionItemText" descr="Text" type="text" order="no" minocc="4" maxocc="*" maxlen="5000" icon="text-content.ico" />
+                    </item>
+                </item>
+                
+            
+            </item>
+        </item>
+    
+    </item>
+    
+    <!-- PROCESSING -->
+    <styles>
+        <style name="TWNSCPS_PopUpPage" format="web">
+        </style>
+    </styles>
+
+    <!-- SEMANTIC TYPES -->
+    <semantictypes>
+    </semantictypes>
+
+</template>

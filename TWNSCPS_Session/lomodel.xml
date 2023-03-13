@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template version="" family="TWNSCPS1.0" name="TWNSCPS_Session" main="yes" webeditorsafe="yes" shred="no" thumbnail="elfh" tag="TWNSCPS_Session" descr="HEE elfh Townscape" comment="HEE elfh Townscape" order="yes" icon="open-folder.ico" xslid="TWNSCPS_Session">
+
+    <!-- PARAMETERS -->
+    <param name="EditorOn" descr="Enable editor" closed="yes" default="yes" type="" >
+        <value>no</value>
+        <value>yes</value>
+    </param>
+
+    <param name="ScrollButtonsEnabled" descr="Enable scroll buttons" closed="yes" default="yes" >
+        <value>no</value>
+        <value>yes</value>
+    </param>
+
+    <param name="ScrollButtonColour" descr="Scroll button colour" default="#e7a715" />
+    <param name="ScrollButtonStrokeColour" descr="Scroll button stroke colour" default="#fff" />
+
+    <param name="HotSpotIndicatorShowOnStart" descr="Hotspot indicators to appear when session opens" closed="yes" default="no" >
+        <value>no</value>
+        <value>yes</value>
+    </param>
+
+    <param name="HotSpotIndicatorColour" descr="Hotspot indicator colour" default="#333333" />
+
+    <param name="height" descr="Stage height (percentage)" closed="no" default="100%" type="" />
+    <param name="width" descr="Stage width (percentage)" closed="no" default="100%" type="" />
+    <param name="stageStartPosition" descr="Stage start left position (percentage)" closed="no" default="0%" type="" />
+    <param name="stageBackgroundColor" descr="Stage background colour (hexadecimal)" closed="no" default="#ffffff" type="" />
+    
+    <param name="footerBackgroundColor" descr="Footer background colour (hexadecimal)" closed="no" default="#7d7d7d" type="" />
+    <param name="footerHeight" descr="Footer height (pixels)" closed="no" default="15px" type="" />
+
+    <item name="overview" tag="Overview" descr="Overview"  maintainemptyinstances="true" type="text" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico" />
+
+    <item name="backgroundImage" tag="BackgroundImage" maintainemptyinstances="true" type="folder" descr="Stage background" order="yes" minocc="1" maxocc="1" icon="section.ico">
+        <item name="image" descr="Image" type="image" maintainemptyinstances="true" linkmode="none" filetypes="*.svg" order="no" minocc="1" maxocc="1" tag="Image" icon="image.ico"/>
+        <param name="imageAlt" descr="Image alt" default="" closed="no" type="" />
+        <param name="left" descr="Left (percentage)" default="0%" closed="no" type="" />
+        <param name="top" descr="Top (percentage)" default="0%" closed="no" type="" />
+        <param name="height" descr="Height (percentage)" default="100%" closed="no" type="" />
+        <param name="width" descr="Width (percentage)" default="100%" closed="no" type="" />
+    </item>
+
+    <item name="stageAssets" tag="StageAssets" descr="Stage assets" type="folder" minocc="1" maxocc="1" icon="section.ico">
+        <item type="lo" version="" name="TWNSCPS_StageAsset" maintainemptyinstances="true" webeditorsafe="yes" descr="Asset" order="no" minocc="6" maxocc="*" tag="TWNSCPS_StageAsset"/>
+    </item>
+
+    <!-- Pages  -->
+    <item name="pages" tag="Pages" descr="Pages" type="folder" minocc="1" maxocc="1" icon="section.ico">
+        <item type="lo" version="" name="TWNSCPS_Page" tag="TWNSCPS_Page" maintainemptyinstances="true" webeditorsafe="yes" descr="Page" order="no" minocc="6" maxocc="*" />
+    </item>
+    
+    <!-- PROCESSING -->
+    <styles>
+        <style name="TWNSCPS_Session" format="web">
+            <xsl id="TWNSCPS_Session" out="index.html" url="index.xsl"/>
+            <xsl id="TWNSCPS_Session" out="loConfig.js" url="loConfigJS.xsl" />
+            <xsl id="TWNSCPS_Session" out="loConfig.json" url="loConfigJson.xsl" />
+        </style>
+    </styles>
+
+    <!-- SEMANTIC TYPES -->
+    <semantictypes>
+    </semantictypes>
+
+</template>
