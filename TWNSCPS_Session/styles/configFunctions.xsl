@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet version="1.0" 
+<xsl:stylesheet version="1.0"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xp="http://www.giuntilabs.com/exact/xp_v1d0">
 
@@ -13,6 +13,20 @@
   <xsl:template match="TWNSCPS_Session">
     <xsl:text>"root": {</xsl:text>
       <xsl:call-template name="printAttributes" />
+
+    <xsl:for-each select="Information"> <!-- should only be one of these -->
+      <xsl:text>, "information": {
+            "type": "information",
+        </xsl:text>
+        <xsl:call-template name="printAttributes" />
+        <xsl:text>
+        ,
+        </xsl:text>
+    <xsl:call-template name="getContents" />
+    <xsl:text>
+    }
+        </xsl:text>
+      </xsl:for-each>
 
     <xsl:for-each select="Overview"> <!-- should only be one of these -->
       <xsl:text>, "overview": {
@@ -40,7 +54,7 @@
     }
         </xsl:text>
   </xsl:for-each>
-    
+
     <xsl:text>, "stageAssets": [</xsl:text>
 
         <xsl:for-each select="StageAssets/TWNSCPS_StageAsset">
@@ -53,8 +67,8 @@
 
             <xsl:choose> <!-- when this a glossary, references or related_sessions node run processDelimitedStringNode-->
         <!--
-              <xsl:when test="contains(name(),'Glossary') or 
-                              contains(name(),'References') or 
+              <xsl:when test="contains(name(),'Glossary') or
+                              contains(name(),'References') or
                               contains(name(),'Related_Sessions')">
           <xsl:if test="*">
               <xsl:text>,</xsl:text>
@@ -64,23 +78,23 @@
         -->
               <xsl:when test="@xp:fieldtype='folder'">
               <!--
-              <xsl:when test="contains(name(),'Authors') or 
-                              contains(name(),'Module_Editors') or 
-                              contains(name(),'Custom_Details') or 
-                              contains(name(),'Downloads') or 
+              <xsl:when test="contains(name(),'Authors') or
+                              contains(name(),'Module_Editors') or
+                              contains(name(),'Custom_Details') or
+                              contains(name(),'Downloads') or
                               contains(name(),'Credits')"> -->
 
                   <xsl:text>,</xsl:text>
 
                   <xsl:call-template name="components" />
-              
-              </xsl:when>  
+
+              </xsl:when>
               <xsl:when test="@xp:fieldtype='text'">
                   <xsl:text>,</xsl:text>
                   <xsl:call-template name="getContents" />
-                </xsl:when>  
+                </xsl:when>
             </xsl:choose>
-          
+
           <xsl:text>}</xsl:text>
 
           <xsl:if test="position() != last()">
@@ -105,8 +119,8 @@
       <xsl:choose>
         <!-- when this a glossary, references or related_sessions node run processDelimitedStringNode-->
         <!--
-              <xsl:when test="contains(name(),'Glossary') or 
-                              contains(name(),'References') or 
+              <xsl:when test="contains(name(),'Glossary') or
+                              contains(name(),'References') or
                               contains(name(),'Related_Sessions')">
           <xsl:if test="*">
               <xsl:text>,</xsl:text>
@@ -116,10 +130,10 @@
         -->
         <xsl:when test="@xp:fieldtype='folder'">
           <!--
-              <xsl:when test="contains(name(),'Authors') or 
-                              contains(name(),'Module_Editors') or 
-                              contains(name(),'Custom_Details') or 
-                              contains(name(),'Downloads') or 
+              <xsl:when test="contains(name(),'Authors') or
+                              contains(name(),'Module_Editors') or
+                              contains(name(),'Custom_Details') or
+                              contains(name(),'Downloads') or
                               contains(name(),'Credits')"> -->
 
           <xsl:text>,</xsl:text>
@@ -143,28 +157,28 @@
     </xsl:for-each>
 
     <xsl:text>]</xsl:text>
-  </xsl:if>	  
+  </xsl:if>
     <xsl:text>}</xsl:text>
 </xsl:template>
 
   <xsl:template name="components">
-    
+
     <xsl:text>"components": [ </xsl:text>
 
     <xsl:for-each select="*">
       <xsl:text>{ </xsl:text>
         <xsl:call-template name="printAttributes" />
-      
+
         <xsl:if test="@xp:fieldtype='text'">
           <xsl:text>,</xsl:text>
           <xsl:call-template name="getContents" />
         </xsl:if>
-          
+
         <xsl:if test="* and @xp:fieldtype!='text'"> <!-- call recursively if child nodes exist -->
           <xsl:text>, </xsl:text>
           <xsl:call-template name="components" />
         </xsl:if>
-      
+
       <xsl:text>} </xsl:text>
         <xsl:if test="position() != last()">
           <!-- if this is not the last page node, add a comma -->
@@ -198,28 +212,28 @@
     <xsl:text>}</xsl:text>
   </xsl:template>
   -->
-  
+
   <xsl:template name="addNodeProperties">
     <xsl:param name="applyFurther" select="'true'" />
     <xsl:param name="addClosingBracket" select="'true'" />
-    
+
     <!-- <xsl:call-template name="addComma" /> -->
     <xsl:text>"</xsl:text>
     <xsl:value-of select="translate(name(), $uppercase, $lowercase)"  />
     <xsl:text>": {</xsl:text>
       <xsl:call-template name="printAttributes" />
-    
+
       <xsl:if test="$applyFurther = 'true'">
         <xsl:apply-templates />
       </xsl:if>
-    
+
     <xsl:if test="$addClosingBracket = 'true'">
       <xsl:text>}</xsl:text>
     </xsl:if>
-  </xsl:template> 
-  
+  </xsl:template>
+
   <xsl:template name="processDelimitedStringNode">
-  
+
     <xsl:text>"contents": </xsl:text>
     <xsl:for-each select="*">
 
@@ -234,7 +248,7 @@
         <xsl:text>"</xsl:text>
 
     </xsl:for-each>
-    
+
   </xsl:template>
 
   <xsl:template name="getContents">
@@ -244,15 +258,15 @@
   </xsl:variable>
 
     <!-- <xsl:value-of select="translate(normalize-space($textVar), '', '')"/> -->
-    
+
     <xsl:variable name="normalisedText">
       <xsl:call-template name="escape">
             <xsl:with-param name="text" select="normalize-space($textVar)" />
         </xsl:call-template>
   </xsl:variable>
-    
+
   <xsl:text>"contents": "</xsl:text>
-  <xsl:value-of select="$normalisedText"/>	    
+  <xsl:value-of select="$normalisedText"/>
   <xsl:text>"</xsl:text>
   </xsl:template>
 
@@ -261,25 +275,25 @@
     <xsl:for-each select="@*">
 
       <xsl:if test="position() != 1">
-        <xsl:text>, </xsl:text>  
+        <xsl:text>, </xsl:text>
       </xsl:if>
-      
+
       <xsl:text>"@</xsl:text>
       <xsl:value-of select="translate(local-name(), $uppercase, $lowercase)" />
       <xsl:text>":"</xsl:text>
-      
+
         <!-- commented out because ../ was turning into ../\ -->
         <xsl:call-template name="escape">
           <xsl:with-param name="text" select="current()" />
         </xsl:call-template>
-      
+
       <xsl:text>"</xsl:text>
 
     </xsl:for-each>
 
   </xsl:template>
   <!-- &quot; -->
-  
+
   <!-- Replace characters which could cause an invalid JS object, by their escape-codes. -->
   <xsl:template name="escape">
     <xsl:param name="text" />
@@ -315,7 +329,7 @@
   <xsl:template match="br" mode="deliminatedStr">
       <xsl:text disable-output-escaping="yes"><![CDATA[<br>]]></xsl:text>
   </xsl:template>
-  
+
   <xsl:template match="p" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<p>]]></xsl:text>
   </xsl:template>
@@ -323,15 +337,15 @@
   <xsl:template match="ul" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<ul>]]></xsl:text>
   </xsl:template>
-  
+
   <xsl:template match="ol" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<ol>]]></xsl:text>
   </xsl:template>
-  
+
   <xsl:template match="li" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<li>]]></xsl:text>
   </xsl:template>
-    
+
     <xsl:template match="b">
         <strong>
             <xsl:apply-templates/>
@@ -352,9 +366,9 @@
             <xsl:apply-templates/>
         </em>
     </xsl:template>
-    
+
   <xsl:template match="link" mode="deliminatedStr">
-  
+
     <xsl:text disable-output-escaping="yes"><![CDATA[<a href="]]></xsl:text>
 
     <xsl:apply-templates select="@href"/>
@@ -364,5 +378,5 @@
     <xsl:text disable-output-escaping="yes"><![CDATA[</a>]]></xsl:text>
 
   </xsl:template>
-  
+
 </xsl:stylesheet>
