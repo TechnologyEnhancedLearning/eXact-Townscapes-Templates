@@ -14,33 +14,22 @@
     <xsl:text>"root": {</xsl:text>
       <xsl:call-template name="printAttributes" />
 
-    <xsl:for-each select="Information"> <!-- should only be one of these -->
-      <xsl:text>, "information": {
-            "type": "information",
-        </xsl:text>
-        <xsl:call-template name="printAttributes" />
-        <xsl:text>
-        ,
-        </xsl:text>
-    <xsl:call-template name="getContents" />
-    <xsl:text>
-    }
-        </xsl:text>
-      </xsl:for-each>
+
 
     <xsl:for-each select="Overview"> <!-- should only be one of these -->
       <xsl:text>, "overview": {
-            "type": "overview",
+        "type": "overview",
         </xsl:text>
         <xsl:call-template name="printAttributes" />
         <xsl:text>
         ,
         </xsl:text>
-    <xsl:call-template name="getContents" />
-    <xsl:text>
-    }
-        </xsl:text>
-      </xsl:for-each>
+        <xsl:call-template name="getContents" />
+      <xsl:text>
+      }
+      </xsl:text>
+    </xsl:for-each>
+
   <xsl:for-each select="BackgroundImage"> <!-- should only be one of these -->
       <xsl:text>, "backgroundImage": {
             "type": "backgroundImage",
@@ -54,6 +43,20 @@
     }
         </xsl:text>
   </xsl:for-each>
+
+  <xsl:for-each select="Information"> <!-- should only be one of these -->
+      <xsl:text>, "information": {
+        "type": "information",
+        </xsl:text>
+        <xsl:call-template name="printAttributes" />
+        <xsl:text>
+        ,
+        </xsl:text>
+        <xsl:call-template name="getContents" />
+      <xsl:text>
+      }
+      </xsl:text>
+    </xsl:for-each>
 
     <xsl:text>, "stageAssets": [</xsl:text>
 

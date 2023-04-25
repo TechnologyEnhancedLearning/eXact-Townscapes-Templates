@@ -30,7 +30,9 @@
     <param name="footerBackgroundColor" descr="Footer background colour (hexadecimal)" closed="no" default="#7d7d7d" type="" />
     <param name="footerHeight" descr="Footer height (pixels)" closed="no" default="15px" type="" />
 
-    <item name="information" tag="Information" descr="Information"  maintainemptyinstances="true" type="text" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico" />
+    <item name="information" tag="Information" descr="Information"  maintainemptyinstances="true" type="text" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico">
+        <param name="infoTitle" descr="Information button title" default="Information" closed="no" type="" />
+    </item>
     <item name="overview" tag="Overview" descr="Overview"  maintainemptyinstances="true" type="text" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico" />
 
     <item name="backgroundImage" tag="BackgroundImage" maintainemptyinstances="true" type="folder" descr="Stage background" order="yes" minocc="1" maxocc="1" icon="section.ico">
