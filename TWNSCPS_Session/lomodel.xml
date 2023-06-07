@@ -16,6 +16,14 @@
     <param name="ScrollButtonStrokeColour" descr="Scroll button stroke colour" default="#fff" />
 
     <param name="InformationButtonText" descr="Information button label" default="Information" />
+    <param name="ControlButtonBackgroundColor" descr="Control button background color" default="#fff" />
+    <param name="ControlButtonTextColor" descr="Control button text colour" default="#fff" />
+    <param name="ControlButtonRolloverBackgroundColor" descr="Control button rollover background colour" default="#fff" />
+    <param name="ControlButtonRolloverTextColor" descr="Control button rollover text colour" default="#fff" />
+    <param name="ControlButtonBorderColor" descr="Control button border colour" default="#fff" />
+    <param name="ControlButtonBorderWidth" descr="Control button border width" default="0" />
+
+
     <param name="HotSpotIndicatorShowOnStart" descr="Hotspot indicators to appear when session opens" closed="yes" default="no" >
         <value>no</value>
         <value>yes</value>
