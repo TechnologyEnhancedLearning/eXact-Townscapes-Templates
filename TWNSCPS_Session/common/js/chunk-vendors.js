@@ -12189,12 +12189,15 @@ const compatUtils = null;
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "D2": function() { return /* binding */ withKeys; },
 /* harmony export */   "F8": function() { return /* binding */ vShow; },
+/* harmony export */   "W3": function() { return /* binding */ TransitionGroup; },
+/* harmony export */   "e8": function() { return /* binding */ vModelCheckbox; },
 /* harmony export */   "iM": function() { return /* binding */ withModifiers; },
 /* harmony export */   "ri": function() { return /* binding */ createApp; },
 /* harmony export */   "uT": function() { return /* binding */ Transition; }
 /* harmony export */ });
-/* unused harmony exports TransitionGroup, VueElement, createSSRApp, defineCustomElement, defineSSRCustomElement, hydrate, initDirectivesForSSR, render, useCssModule, useCssVars, vModelCheckbox, vModelDynamic, vModelRadio, vModelSelect, vModelText, withKeys */
+/* unused harmony exports VueElement, createSSRApp, defineCustomElement, defineSSRCustomElement, hydrate, initDirectivesForSSR, render, useCssModule, useCssVars, vModelDynamic, vModelRadio, vModelSelect, vModelText */
 /* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6699);
 /* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _vue_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2268);
@@ -13468,7 +13471,7 @@ const TransitionGroupImpl = {
   }
 
 };
-const TransitionGroup = (/* unused pure expression or super */ null && (TransitionGroupImpl));
+const TransitionGroup = TransitionGroupImpl;
 
 function callPendingCbs(c) {
   const el = c.el;
@@ -13943,7 +13946,7 @@ const withKeys = (fn, modifiers) => {
       return;
     }
 
-    const eventKey = hyphenate(event.key);
+    const eventKey = (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__/* .hyphenate */ .rs)(event.key);
 
     if (modifiers.some(k => k === eventKey || keyNames[k] === eventKey)) {
       return fn(event);

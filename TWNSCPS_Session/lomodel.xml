@@ -15,6 +15,7 @@
     <param name="ScrollButtonColour" descr="Scroll button colour" default="#e7a715" />
     <param name="ScrollButtonStrokeColour" descr="Scroll button stroke colour" default="#fff" />
 
+    <param name="InformationButtonText" descr="Information button label" default="Information" />
     <param name="ControlButtonBackgroundColor" descr="Control button background color" default="#fff" />
     <param name="ControlButtonTextColor" descr="Control button text colour" default="#fff" />
     <param name="ControlButtonRolloverBackgroundColor" descr="Control button rollover background colour" default="#fff" />
@@ -34,9 +35,11 @@
     <param name="width" descr="Stage width (percentage)" closed="no" default="100%" type="" />
     <param name="stageStartPosition" descr="Stage start left position (percentage)" closed="no" default="0%" type="" />
     <param name="stageBackgroundColor" descr="Stage background colour (hexadecimal)" closed="no" default="#ffffff" type="" />
-    
+
     <param name="footerBackgroundColor" descr="Footer background colour (hexadecimal)" closed="no" default="#7d7d7d" type="" />
     <param name="footerHeight" descr="Footer height (pixels)" closed="no" default="15px" type="" />
+
+    <item name="information" tag="Information" descr="Information"  maintainemptyinstances="true" type="text" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico" />
 
     <item name="overview" tag="Overview" descr="Overview"  maintainemptyinstances="true" type="text" minocc="1" maxocc="1" maxlen="5000" icon="text-content.ico" />
 
@@ -57,7 +60,7 @@
     <item name="pages" tag="Pages" descr="Pages" type="folder" minocc="1" maxocc="1" icon="section.ico">
         <item type="lo" version="" name="TWNSCPS_Page" tag="TWNSCPS_Page" maintainemptyinstances="true" webeditorsafe="yes" descr="Page" order="no" minocc="6" maxocc="*" />
     </item>
-    
+
     <!-- PROCESSING -->
     <styles>
         <style name="TWNSCPS_Session" format="web">
