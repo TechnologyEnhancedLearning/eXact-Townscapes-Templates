@@ -351,7 +351,7 @@
 
   <xsl:template match="li" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<li>]]></xsl:text>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="deliminatedStr" />
     <xsl:text disable-output-escaping="yes"><![CDATA[</li>]]></xsl:text>
   </xsl:template>
 
