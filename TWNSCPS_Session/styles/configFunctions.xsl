@@ -339,35 +339,43 @@
 
   <xsl:template match="ul" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<ul>]]></xsl:text>
+      <xsl:apply-templates select="li" mode="deliminatedStr" />
+    <xsl:text disable-output-escaping="yes"><![CDATA[</ul>]]></xsl:text>
   </xsl:template>
 
   <xsl:template match="ol" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<ol>]]></xsl:text>
+      <xsl:apply-templates select="li" mode="deliminatedStr" />
+    <xsl:text disable-output-escaping="yes"><![CDATA[</ol>]]></xsl:text>
   </xsl:template>
 
   <xsl:template match="li" mode="deliminatedStr">
     <xsl:text disable-output-escaping="yes"><![CDATA[<li>]]></xsl:text>
+      <xsl:apply-templates mode="deliminatedStr" />
+    <xsl:text disable-output-escaping="yes"><![CDATA[</li>]]></xsl:text>
   </xsl:template>
 
-    <xsl:template match="b">
-        <strong>
+  
+
+    <xsl:template match="b" mode="deliminatedStr">
+        <xsl:text disable-output-escaping="yes"><![CDATA[<strong>]]></xsl:text>
             <xsl:apply-templates/>
-        </strong>
+        <xsl:text disable-output-escaping="yes"><![CDATA[</strong>]]></xsl:text>
     </xsl:template>
-    <xsl:template match="i">
-        <em>
+    <xsl:template match="i" mode="deliminatedStr">
+        <xsl:text disable-output-escaping="yes"><![CDATA[<em>]]></xsl:text>
             <xsl:apply-templates/>
-        </em>
+        <xsl:text disable-output-escaping="yes"><![CDATA[</em>]]></xsl:text>
     </xsl:template>
-      <xsl:template match="strong">
-        <strong>
+      <xsl:template match="strong" mode="deliminatedStr">
+        <xsl:text disable-output-escaping="yes"><![CDATA[<strong>]]></xsl:text>
             <xsl:apply-templates/>
-        </strong>
+        <xsl:text disable-output-escaping="yes"><![CDATA[</strong>]]></xsl:text>
     </xsl:template>
-    <xsl:template match="em">
-        <em>
+    <xsl:template match="em" mode="deliminatedStr">
+        <xsl:text disable-output-escaping="yes"><![CDATA[<em>]]></xsl:text>
             <xsl:apply-templates/>
-        </em>
+        <xsl:text disable-output-escaping="yes"><![CDATA[</em>]]></xsl:text>
     </xsl:template>
 
   <xsl:template match="link" mode="deliminatedStr">
