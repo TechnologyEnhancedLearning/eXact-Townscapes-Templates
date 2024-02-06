@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2090:
+/***/ 7034:
 /***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
 
 
@@ -339,6 +339,8 @@ class Stage {
     (0,defineProperty/* default */.Z)(this, "backgroundColor", "");
     (0,defineProperty/* default */.Z)(this, "footerColor", "");
     (0,defineProperty/* default */.Z)(this, "footerHeight", "0");
+    (0,defineProperty/* default */.Z)(this, "animationButtonEnabled", false);
+    (0,defineProperty/* default */.Z)(this, "hitZoneButtonEnabled", false);
     (0,defineProperty/* default */.Z)(this, "scrollButtonsEnabled", false);
     (0,defineProperty/* default */.Z)(this, "scrollButtonColour", "");
     (0,defineProperty/* default */.Z)(this, "scrollButtonStrokeColour", "");
@@ -401,7 +403,7 @@ const store = (0,vuex_esm_bundler/* createStore */.MT)({
     loadingStatus: "loading",
     sessionConfig: new SessionConfig(),
     visibleModal: "",
-    animationsEnabled: true,
+    animationsEnabled: false,
     hotspotIndicatorsEnabled: false,
     stageLeftPosition: "0%",
     viewMode: "normal"
@@ -506,6 +508,8 @@ const store = (0,vuex_esm_bundler/* createStore */.MT)({
       // config.editorOn = true;
       this.dispatch("enableHotspotIndicators", fileConfig.root["@hotspotindicatorshowonstart"] === "yes");
       this.dispatch("enableAnimations", true);
+      config.stage.animationButtonEnabled = fileConfig.root["@animationcontrolbuttonenabled"] === "yes";
+      config.stage.hitZoneButtonEnabled = fileConfig.root["@hitzonecontrolbuttonenabled"] === "yes";
       config.stage.hotSpotIndicatorColour = fileConfig.root["@hotspotindicatorcolour"];
       config.stage.scrollButtonsEnabled = fileConfig.root["@scrollbuttonsenabled"] === "yes";
       if (config.stage.scrollButtonsEnabled) {
@@ -651,23 +655,23 @@ const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.Z)(LoadingScreenvu
 var vue_router = __webpack_require__(2483);
 // EXTERNAL MODULE: ./node_modules/@vue/shared/dist/shared.esm-bundler.js
 var shared_esm_bundler = __webpack_require__(2268);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-41.use[2]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/HomeView.vue?vue&type=template&id=4ed983ea&ts=true
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-41.use[2]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/HomeView.vue?vue&type=template&id=68062567&ts=true
 
-const HomeViewvue_type_template_id_4ed983ea_ts_true_hoisted_1 = {
+const HomeViewvue_type_template_id_68062567_ts_true_hoisted_1 = {
   class: "stage-control-panel"
 };
-const HomeViewvue_type_template_id_4ed983ea_ts_true_hoisted_2 = /*#__PURE__*/(0,runtime_core_esm_bundler/* createElementVNode */._)("span", {
+const HomeViewvue_type_template_id_68062567_ts_true_hoisted_2 = /*#__PURE__*/(0,runtime_core_esm_bundler/* createElementVNode */._)("span", {
   class: "sr-only"
 }, "Switch to accessible view", -1);
 const _hoisted_3 = /*#__PURE__*/(0,runtime_core_esm_bundler/* createElementVNode */._)("span", {
   class: "",
   "aria-hidden": "true"
 }, "Accessible view ", -1);
-const _hoisted_4 = [HomeViewvue_type_template_id_4ed983ea_ts_true_hoisted_2, _hoisted_3];
+const _hoisted_4 = [HomeViewvue_type_template_id_68062567_ts_true_hoisted_2, _hoisted_3];
 const _hoisted_5 = /*#__PURE__*/(0,runtime_core_esm_bundler/* createElementVNode */._)("span", {
   class: "sr-only"
 }, "Toggle animations on and off", -1);
-const HomeViewvue_type_template_id_4ed983ea_ts_true_hoisted_6 = {
+const HomeViewvue_type_template_id_68062567_ts_true_hoisted_6 = {
   key: 0,
   "aria-hidden": "true"
 };
@@ -690,7 +694,7 @@ const _hoisted_11 = /*#__PURE__*/(0,runtime_core_esm_bundler/* createElementVNod
   class: "sr-only"
 }, "Switch to accessible view", -1);
 const _hoisted_12 = {
-  key: 5,
+  key: 6,
   class: "xy-position"
 };
 const _hoisted_13 = {
@@ -716,14 +720,14 @@ const _hoisted_22 = {
   class: "info-modal-contents"
 };
 const _hoisted_23 = ["innerHTML"];
-function HomeViewvue_type_template_id_4ed983ea_ts_true_render(_ctx, _cache, $props, $setup, $data, $options) {
+function HomeViewvue_type_template_id_68062567_ts_true_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_small_view = (0,runtime_core_esm_bundler/* resolveComponent */.up)("small-view");
   const _component_svg_icon = (0,runtime_core_esm_bundler/* resolveComponent */.up)("svg-icon");
   const _component_asset_component = (0,runtime_core_esm_bundler/* resolveComponent */.up)("asset-component");
   const _component_modal_view = (0,runtime_core_esm_bundler/* resolveComponent */.up)("modal-view");
   return (0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)(runtime_core_esm_bundler/* Fragment */.HY, null, [(0,runtime_core_esm_bundler/* createVNode */.Wm)(_component_small_view, {
     class: (0,shared_esm_bundler/* normalizeClass */.C_)({
-      'display': _ctx.viewMode === 'smallOnly',
+      display: _ctx.viewMode === 'smallOnly',
       'editor-on': _ctx.sessionConfig.editorOn === true
     })
   }, null, 8, ["class"]), (0,runtime_core_esm_bundler/* createElementVNode */._)("div", {
@@ -732,23 +736,24 @@ function HomeViewvue_type_template_id_4ed983ea_ts_true_render(_ctx, _cache, $pro
       'display-none': _ctx.viewMode !== 'normal',
       'editor-on': _ctx.sessionConfig.editorOn === true
     })
-  }, [(0,runtime_core_esm_bundler/* createElementVNode */._)("div", HomeViewvue_type_template_id_4ed983ea_ts_true_hoisted_1, [!_ctx.sessionConfig.editorOn ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
+  }, [(0,runtime_core_esm_bundler/* createElementVNode */._)("div", HomeViewvue_type_template_id_68062567_ts_true_hoisted_1, [!_ctx.sessionConfig.editorOn ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
     key: 0,
     onClick: _cache[0] || (_cache[0] = $event => _ctx.setSimpleViewMode()),
     class: "hide controlBtn"
-  }, _hoisted_4)) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), (0,runtime_core_esm_bundler/* createElementVNode */._)("button", {
+  }, _hoisted_4)) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.sessionConfig.stage.animationButtonEnabled ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
+    key: 1,
     onClick: _cache[1] || (_cache[1] = $event => _ctx.stopStartAnimations()),
     class: "controlBtn hide"
-  }, [_hoisted_5, _ctx.animationsExist && _ctx.animationsEnabled === true ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("span", HomeViewvue_type_template_id_4ed983ea_ts_true_hoisted_6, "Stop animations ")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.animationsExist && _ctx.animationsEnabled === false ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("span", _hoisted_7, "Start animations ")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true)]), !_ctx.sessionConfig.editorOn ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
-    key: 1,
+  }, [_hoisted_5, _ctx.animationsExist && _ctx.animationsEnabled === true ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("span", HomeViewvue_type_template_id_68062567_ts_true_hoisted_6, "Stop animations ")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.animationsExist && _ctx.animationsEnabled === false ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("span", _hoisted_7, "Start animations ")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true)])) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.sessionConfig.stage.hitZoneButtonEnabled ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
+    key: 2,
     onClick: _cache[2] || (_cache[2] = $event => _ctx.toggleHotspotIndicator()),
     class: "hide controlBtn"
   }, [_hoisted_8, _ctx.hotspotIndicatorsEnabled === true ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("span", _hoisted_9, "Hide selectable areas ")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.hotspotIndicatorsEnabled === false ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("span", _hoisted_10, "Show selectable areas ")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true)])) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.sessionConfig.info.title && _ctx.sessionConfig.info.text ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
-    key: 2,
+    key: 3,
     class: "hide controlBtn",
     onClick: _cache[3] || (_cache[3] = $event => _ctx.setVisibleModal('information'))
   }, (0,shared_esm_bundler/* toDisplayString */.zw)(_ctx.sessionConfig.info.title), 1)) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), !_ctx.sessionConfig.editorOn ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
-    key: 3,
+    key: 4,
     onClick: _cache[4] || (_cache[4] = $event => _ctx.setSimpleViewMode()),
     class: "hide svg-btn"
   }, [_hoisted_11, (0,runtime_core_esm_bundler/* createVNode */.Wm)(_component_svg_icon, {
@@ -757,12 +762,12 @@ function HomeViewvue_type_template_id_4ed983ea_ts_true_render(_ctx, _cache, $pro
     "aria-hidden": "true",
     color1: _ctx.sessionConfig.stage.scrollButtonColour
   }, null, 8, ["color1"])])) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.sessionConfig.editorOn === true ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("button", {
-    key: 4,
+    key: 5,
     style: {
       "padding": "0.5em"
     },
     onClick: _cache[5] || (_cache[5] = $event => _ctx.setVisibleModal('assetData'))
-  }, "Show Asset Info")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.sessionConfig.editorOn === true ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("div", _hoisted_12, (0,shared_esm_bundler/* toDisplayString */.zw)(_ctx.xPos) + "%, " + (0,shared_esm_bundler/* toDisplayString */.zw)(_ctx.yPos) + "% ", 1)) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true)]), (0,runtime_core_esm_bundler/* createElementVNode */._)("div", {
+  }, " Show Asset Info ")) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true), _ctx.sessionConfig.editorOn === true ? ((0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("div", _hoisted_12, (0,shared_esm_bundler/* toDisplayString */.zw)(_ctx.xPos) + "%, " + (0,shared_esm_bundler/* toDisplayString */.zw)(_ctx.yPos) + "% ", 1)) : (0,runtime_core_esm_bundler/* createCommentVNode */.kq)("", true)]), (0,runtime_core_esm_bundler/* createElementVNode */._)("div", {
     id: "container",
     class: (0,shared_esm_bundler/* normalizeClass */.C_)({
       'drag-zone': _ctx.sessionConfig.editorOn === true
@@ -838,7 +843,7 @@ function HomeViewvue_type_template_id_4ed983ea_ts_true_render(_ctx, _cache, $pro
       onClose: _cache[13] || (_cache[13] = $event => _ctx.setVisibleModal(''))
     }, {
       header: (0,runtime_core_esm_bundler/* withCtx */.w5)(() => [(0,runtime_core_esm_bundler/* createTextVNode */.Uk)(" Asset Information ")]),
-      body: (0,runtime_core_esm_bundler/* withCtx */.w5)(() => [(0,runtime_core_esm_bundler/* createElementVNode */._)("p", null, [(0,runtime_core_esm_bundler/* createTextVNode */.Uk)("Here are the details for all the assets on the stage. "), (0,runtime_core_esm_bundler/* createElementVNode */._)("button", {
+      body: (0,runtime_core_esm_bundler/* withCtx */.w5)(() => [(0,runtime_core_esm_bundler/* createElementVNode */._)("p", null, [(0,runtime_core_esm_bundler/* createTextVNode */.Uk)(" Here are the details for all the assets on the stage. "), (0,runtime_core_esm_bundler/* createElementVNode */._)("button", {
         onClick: _cache[12] || (_cache[12] = $event => _ctx.copyToClipboard())
       }, "Copy all to clipboard")]), (0,runtime_core_esm_bundler/* createElementVNode */._)("table", _hoisted_19, [_hoisted_20, (0,runtime_core_esm_bundler/* createElementVNode */._)("tbody", null, [((0,runtime_core_esm_bundler/* openBlock */.wg)(true), (0,runtime_core_esm_bundler/* createElementBlock */.iD)(runtime_core_esm_bundler/* Fragment */.HY, null, (0,runtime_core_esm_bundler/* renderList */.Ko)(_ctx.sessionConfig.assets, a => {
         return (0,runtime_core_esm_bundler/* openBlock */.wg)(), (0,runtime_core_esm_bundler/* createElementBlock */.iD)("tr", {
@@ -866,7 +871,7 @@ function HomeViewvue_type_template_id_4ed983ea_ts_true_render(_ctx, _cache, $pro
     _: 1
   })], 64);
 }
-;// CONCATENATED MODULE: ./src/components/HomeView.vue?vue&type=template&id=4ed983ea&ts=true
+;// CONCATENATED MODULE: ./src/components/HomeView.vue?vue&type=template&id=68062567&ts=true
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-41.use[2]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/ModalView.vue?vue&type=template&id=8cf18ed0&scoped=true&ts=true
 
@@ -1778,34 +1783,34 @@ const __default__ = (0,runtime_core_esm_bundler/* defineComponent */.aZ)({
   },
   methods: {
     onMoveLeft(a, moveValue) {
-      let position = 0.00;
+      let position = 0.0;
       position = parseFloat(a.left) - moveValue;
       a.left = position.toFixed(2) + "%";
     },
     onMoveRight(a, moveValue) {
-      let position = 0.00;
+      let position = 0.0;
       position = parseFloat(a.left) + moveValue;
       a.left = position.toFixed(2) + "%";
     },
     onMoveUp(a, moveValue) {
-      let position = 0.00;
+      let position = 0.0;
       position = parseFloat(a.top) - moveValue;
       a.top = position.toFixed(2) + "%";
     },
     onMoveDown(a, moveValue) {
-      let position = 0.00;
+      let position = 0.0;
       position = parseFloat(a.top) + moveValue;
       a.top = position.toFixed(2) + "%";
     },
     onIncreaseSize(a) {
-      let width = 0.00;
+      let width = 0.0;
       if (a.width !== "auto") {
         width = parseFloat(a.width) + 0.1;
         a.width = width.toFixed(2) + "%";
       }
     },
     onDecreaseSize(a) {
-      let width = 0.00;
+      let width = 0.0;
       if (a.width !== "auto") {
         width = parseFloat(a.width) - 0.1;
         a.width = width.toFixed(2) + "%";
@@ -1980,12 +1985,12 @@ const __default__ = (0,runtime_core_esm_bundler/* defineComponent */.aZ)({
 
 const __injectCSSVars__ = () => {
   (0,runtime_dom_esm_bundler/* useCssVars */.sj)(_ctx => ({
-    "31be04c2": _ctx.sessionConfig.stage.controlButtonBackgroundColor,
-    "f648d700": _ctx.sessionConfig.stage.controlButtonTextColor,
-    "4045788e": _ctx.sessionConfig.stage.controlButtonRolloverBackgroundColor,
-    "45f6aeaf": _ctx.sessionConfig.stage.controlButtonRolloverTextColor,
-    "3e54fb3e": _ctx.sessionConfig.stage.controlButtonBorderColor,
-    "3c26fe78": _ctx.sessionConfig.stage.controlButtonBorderWidth
+    "4c8298e4": _ctx.sessionConfig.stage.controlButtonBackgroundColor,
+    "548faca2": _ctx.sessionConfig.stage.controlButtonTextColor,
+    "1441cf7d": _ctx.sessionConfig.stage.controlButtonRolloverBackgroundColor,
+    "07fea4de": _ctx.sessionConfig.stage.controlButtonRolloverTextColor,
+    "6ce187d0": _ctx.sessionConfig.stage.controlButtonBorderColor,
+    "6df88633": _ctx.sessionConfig.stage.controlButtonBorderWidth
   }));
 };
 const __setup__ = __default__.setup;
@@ -1996,10 +2001,10 @@ __default__.setup = __setup__ ? (props, ctx) => {
 /* harmony default export */ var HomeViewvue_type_script_lang_ts = (__default__);
 ;// CONCATENATED MODULE: ./src/components/HomeView.vue?vue&type=script&lang=ts
  
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/HomeView.vue?vue&type=style&index=0&id=4ed983ea&lang=scss
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/HomeView.vue?vue&type=style&index=0&id=68062567&lang=scss
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/HomeView.vue?vue&type=style&index=0&id=4ed983ea&lang=scss
+;// CONCATENATED MODULE: ./src/components/HomeView.vue?vue&type=style&index=0&id=68062567&lang=scss
 
 ;// CONCATENATED MODULE: ./src/components/HomeView.vue
 
@@ -2009,7 +2014,7 @@ __default__.setup = __setup__ ? (props, ctx) => {
 ;
 
 
-const HomeView_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(HomeViewvue_type_script_lang_ts, [['render',HomeViewvue_type_template_id_4ed983ea_ts_true_render]])
+const HomeView_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(HomeViewvue_type_script_lang_ts, [['render',HomeViewvue_type_template_id_68062567_ts_true_render]])
 
 /* harmony default export */ var HomeView = (HomeView_exports_);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-41.use[2]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/HotspotPageView.vue?vue&type=template&id=998ebfbe&ts=true
@@ -3546,7 +3551,7 @@ const App_exports_ = /*#__PURE__*/(0,exportHelper/* default */.Z)(Appvue_type_sc
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], function() { return __webpack_require__(2090); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], function() { return __webpack_require__(7034); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
