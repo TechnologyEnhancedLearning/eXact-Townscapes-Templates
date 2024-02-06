@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template version="" family="TWNSCPS1.0" name="TWNSCPS_Session" main="yes" webeditorsafe="yes" shred="no" thumbnail="elfh" tag="TWNSCPS_Session" descr="HEE elfh Townscape" comment="HEE elfh Townscape" order="yes" icon="open-folder.ico" xslid="TWNSCPS_Session">
+<template version="" family="TWNSCPS1.0" name="TWNSCPS_Session" main="yes" webeditorsafe="yes" shred="no" thumbnail="elfh" tag="TWNSCPS_Session" descr="Resource Template" comment="Resource Template" order="yes" icon="open-folder.ico" xslid="TWNSCPS_Session">
 
     <!-- PARAMETERS -->
     <param name="EditorOn" descr="Enable editor" closed="yes" default="yes" type="" >

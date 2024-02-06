@@ -12,19 +12,19 @@ def buildTemplates(copyVueAssets='', templateVersion=0.0, cleanup='y'):
     :return: An .xpta file that can be installed in eXact Packager
   """
 
-  models = [  {     'name': 'TWNSCPS_Session', 
+  models = [  {     'name': 'TWNSCPS_Session',
                     'sharedStyles': [],
                     'sharedCommon': []
                 },
-                {   'name': 'TWNSCPS_StageAsset', 
+                {   'name': 'TWNSCPS_StageAsset',
                     'sharedStyles': [],
                     'sharedCommon': []
                 },
-                {   'name': 'TWNSCPS_Page', 
+                {   'name': 'TWNSCPS_Page',
                     'sharedStyles': [],
                     'sharedCommon': []
                 }
-           ]     
+           ]
 
   if copyVueAssets == '':
     print('No vue asset folder specified.  Vue assets will not be copied into the templates.')
@@ -45,12 +45,12 @@ def buildTemplates(copyVueAssets='', templateVersion=0.0, cleanup='y'):
   except ValueError as e:
       print("Error!  Template version must be a floating point number, e.g. 1.0")
       print(e)
-      sys.exit()    
+      sys.exit()
 
   cwd = Path.cwd()
 
   distFolder = 'dist'
-  xptaFilename = 'eXact-townscapes-templates'
+  xptaFilename = 'eXact-resource-templates'
   subLOSearchStr = '<item type="lo" version=""'
   subLOReplaceStr = '<item type="lo" version="' + str(modelVersions) + '"'
   xptVersionSearchStr = '<template version=""'
@@ -75,7 +75,7 @@ def buildTemplates(copyVueAssets='', templateVersion=0.0, cleanup='y'):
 
       # copy model code into build folder
       shutil.copytree(cwd / modelName, buildFolder / modelName)
-      
+
       if not Path.exists(buildFolder / modelName / "styles"):
           os.mkdir(buildFolder / modelName / "styles")
 
@@ -95,21 +95,21 @@ def buildTemplates(copyVueAssets='', templateVersion=0.0, cleanup='y'):
               else:
                   newLine = newLine.replace(xptVersionSearchStr, xptVersionReplaceStr) # if this a sub lo, add the lo's version number to the top of the file
 
-              print(newLine, end='') # write the modified line to the file   
-      
+              print(newLine, end='') # write the modified line to the file
+
       if model["name"] == 'TWNSCPS_Session' and copyVueAssets != '':
         # if this is marked as the root lo and we have specified some vue assets, then
-        # remove old assets from the root LO common folder and copy over the new assets 
+        # remove old assets from the root LO common folder and copy over the new assets
         # from our specified folder
         # if (copyVueAssets != ""):
         print('Copying Vue assets into root learning object ' + model["name"])
-        
+
         if Path.exists(cwd / copyVueAssets):
             # remove old assets
             shutil.rmtree(modelPath / "common" )
             # copy new ones over into model's common folder
             shutil.copytree(cwd / copyVueAssets, buildFolder / modelName / "common")
-            
+
         else:
             print("WARNING.  Cannot find path to Vue assets.  Path: " + copyVueAssets)
 
@@ -125,7 +125,7 @@ def buildTemplates(copyVueAssets='', templateVersion=0.0, cleanup='y'):
       if cleanup != 'n':
           shutil.rmtree(buildFolder / modelName)
           os.remove(str(buildFolder) + '\\' + xptPath)
-          
+
       print(str(model["name"]) + ' built')
 
   templateZip.close()
@@ -136,5 +136,5 @@ def buildTemplates(copyVueAssets='', templateVersion=0.0, cleanup='y'):
 
 if __name__ == "__main__":
   fire.Fire({
-    'townscape-templates': buildTemplates
+    'resource-templates': buildTemplates
   })
