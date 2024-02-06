@@ -12,6 +12,16 @@
         <value>yes</value>
     </param>
 
+    <param name="AnimationControlButtonEnabled" descr="Enable animation control button" closed="yes" default="yes" >
+        <value>no</value>
+        <value>yes</value>
+    </param>
+
+    <param name="HitZoneControlButtonEnabled" descr="Enable selectable area control button" closed="yes" default="yes" >
+        <value>no</value>
+        <value>yes</value>
+    </param>
+
     <param name="ScrollButtonColour" descr="Scroll button colour" default="#e7a715" />
     <param name="ScrollButtonStrokeColour" descr="Scroll button stroke colour" default="#fff" />
 
