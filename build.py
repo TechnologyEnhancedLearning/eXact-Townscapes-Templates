@@ -136,5 +136,5 @@ def buildTemplates(copyVueAssets='', templateVersion=0.0, cleanup='y'):
 
 if __name__ == "__main__":
   fire.Fire({
-    'townscape-templates': buildTemplates
+    'resource-templates': buildTemplates
   })
